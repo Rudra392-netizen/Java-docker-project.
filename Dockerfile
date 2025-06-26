@@ -1,19 +1,11 @@
-# stable official Java runtime base image
+#set the working directory
 FROM openjdk:17-jdk-alpine
-
-# metadata
-LABEL maintainer="your-email@example.com"
-LABEL version="1.0"
-LABEL description="A simple Java application"
-
-# working directory
+#Now setup a folder where your applicaion code will be stored
 WORKDIR /app
-
-# Copy source code into the container
+#Now i will copy everything from the HOST machine to your container
 COPY src/Main.java /app/Main.java
-
-# Compile the Java code
+#I will compile my code
 RUN javac Main.java
+#Now i will run my code
+CMD ["java","Main"]
 
-# Run the Java application when the container starts
-CMD ["java", "Main"]
